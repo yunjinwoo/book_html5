@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stats.js</title>
+
+    <link href="/stock/open/_bootstrap/css/bootstrap.css" rel="stylesheet">
+    <script src="../prefix.js"></script>
+    <script src="Stats.js"></script>
+
+    <script>
+        removePrefix(window, 'requestAnimationFrame');
+    </script>
+
+</head>
+<body>
+<script>
+    var stats = new Stats();
+
+    stats.setMode(0);
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.top = '10px';
+    stats.domElement.style.left = '10px';
+
+    document.body.appendChild(stats.domElement);
+
+    var animte = function(){
+        stats.begin();
+
+
+        stats.end();
+        resquestAnimationFrame(animate);
+
+    }
+
+    resquestAnimationFrame(animate);
+</script>
+
+</body>
+</html>

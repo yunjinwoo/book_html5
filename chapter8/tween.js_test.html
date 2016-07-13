@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tween.js</title>
+
+    <link href="/stock/open/_bootstrap/css/bootstrap.css" rel="stylesheet">
+    <script src="../prefix.js"></script>
+    <script src="tween.js"></script>
+
+    <script>
+        removePrefix(window, 'requestAnimationFrame');
+        removePrefix(window, 'cancelAnimationFrame');
+    </script>
+
+</head>
+<body>
+<script>
+    /*
+    * to()          수치의 최종 형태를 설정합니다.
+    * easing()      수치 변환 함수를 설정합니다.
+    * onUpdate()    update 이벤트를 연결합니다.
+    * start()       수치 변환을 시작합니다.
+    * delay()       수치 변환을 특정 시간만큼 미룹니다.
+    * */
+
+    var label = document.createElement('h1');
+    label.textContent = 'label';
+    label.style.position = 'absolute';
+    document.body.appendChild(label);
+
+
+    var tween = new TWEEN.Tween({rint:0});
+    tween.to({rint:500}, 2000);
+    tween.easing(TWEEN.Easing.Elastic.InOut);
+    tween.onUpdate(function(){
+        label.style.left = this.rint + 'px';
+    });
+
+    tween.start();
+
+    var animate = function(){
+        requestAnimationFrame(animate);
+        TWEEN.update();
+    };
+
+    requestAnimationFrame(animate);
+</script>
+
+</body>
+</html>
